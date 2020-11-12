@@ -1,6 +1,3 @@
-const { response } = require("express");
-const { get } = require("mongoose");
-
 // create a variable to hold db connection
 let db;
 
@@ -8,9 +5,9 @@ let db;
 const request = indexedDB.open("budget_tracker", 1);
 
 // event will emit if the database version changes
-request.onupgradeneeded = function (target) {
+request.onupgradeneeded = function(target) {
   // save reference to the database
-  let db = target.result;
+  let db = event.target.result;
   // creates an object store/table called "pending" with auto incrementing key
   db.createObjectStore('pending', { autoIncrement: true });
 };
